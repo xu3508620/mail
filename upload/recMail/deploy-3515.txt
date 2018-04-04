@@ -1,0 +1,49 @@
+
+PLAY [msd01-ecs-wechat01] ******************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [msd01-ecs-wechat01]
+
+TASK [MSD/pro_deploy_v2 : 获取下载包的文件名] *******************************************
+changed: [msd01-ecs-wechat01]
+
+TASK [MSD/pro_deploy_v2 : 判断文件是否存在] ********************************************
+changed: [msd01-ecs-wechat01 -> 10.25.66.225]
+
+TASK [MSD/pro_deploy_v2 : 从OSS地址下载程序包] *****************************************
+changed: [msd01-ecs-wechat01 -> 10.25.66.225]
+
+TASK [MSD/pro_deploy_v2 : 从SLB中将group_A节点组权重设置为0] ******************************
+changed: [msd01-ecs-wechat01 -> 10.25.66.225]
+
+TASK [MSD/pro_deploy_v2 : group_A节点组权重设置为0后等待30s] ******************************
+Pausing for 30 seconds
+(ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+ok: [msd01-ecs-wechat01]
+
+TASK [MSD/pro_deploy_v2 : 停止服务] ************************************************
+changed: [msd01-ecs-wechat01]
+
+TASK [MSD/pro_deploy_v2 : 对程序目录进行备份] *******************************************
+changed: [msd01-ecs-wechat01]
+
+TASK [MSD/pro_deploy_v2 : 创建/data1/deploy/wechat/tomcat/webapps目录] *************
+changed: [msd01-ecs-wechat01]
+
+TASK [MSD/pro_deploy_v2 : 复制文件包到/data1/deploy/wechat/tomcat/webapps目录下] ********
+changed: [msd01-ecs-wechat01]
+
+TASK [MSD/pro_deploy_v2 : 启动tomcat服务] ******************************************
+changed: [msd01-ecs-wechat01]
+
+TASK [MSD/pro_deploy_v2 : 等待tomcat启动完成] ****************************************
+Pausing for 40 seconds
+(ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+ok: [msd01-ecs-wechat01]
+
+TASK [MSD/pro_deploy_v2 : 将group_A节点组权重设置为100] *********************************
+changed: [msd01-ecs-wechat01 -> 10.25.66.225]
+
+PLAY RECAP *********************************************************************
+msd01-ecs-wechat01         : ok=13   changed=10   unreachable=0    failed=0   
+
